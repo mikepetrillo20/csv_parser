@@ -1,10 +1,25 @@
 import csv
-with open('data.csv', newline='') as csvfile:
-    spamreader = csv.reader(csvfile, delimiter=',')
-    count = 0
-    with open('small_data.csv', 'w', newline='') as small_csvfile:
-        spamwriter = csv.writer(small_csvfile, delimiter=',')
-        for row in spamreader:
-            if count <= 9999:
-                spamwriter.writerow(row)
-                count += 1
+
+class ListParser:
+
+    def __init__(self):
+        self.rows = []
+        self.titles = []
+
+    def parse_to_list(self, csv_file):
+        # reading the csv file
+        with open(csv_file, 'r') as csvfile:
+            # creating the csv reader object
+            csvreader = csv.reader(csvfile)
+
+            # grabbing the first row and moving pointer to following row
+            self.titles = next(csvreader)
+
+            # grabbing each data row one by one
+            for row in csvreader:
+                self.rows.append(row)
+
+
+test = ListParser()
+test.parse_to_list('small_data.csv')
+print(test.rows)
