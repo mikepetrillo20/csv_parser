@@ -1,10 +1,10 @@
 import unittest
-from csv_parser import ParserUsingArray
+import main
 
 class TestParserUsingArray(unittest.TestCase):
     
     def setUp(self):
-        self.test = ParserUsingArray('test_data.csv')
+        self.test = main.ParserUsingArray('test_data.csv')
         self.test.get_rows()
         self.test.get_titles()
 
