@@ -2,7 +2,7 @@ import csv
 
 def menu():
     print('Please select an option below:')
-    print('1: Load')
+    print('1: TODO')
     print('2: Print')
     print('3: TODO')
     print('4: TODO')
@@ -37,36 +37,33 @@ class LoadArray:
             self.titles = next(csvreader)
 
 if __name__ == "__main__":
-    # user choice selection
-    selection = ''
-    # user csv file
-    user_file = ''
-    # user error checking conditional
-    happy = 'n'
+    choice = ''
+    user_csv_file = ''
 
-    # loop to grab the csv file the user wants to work with
-    while happy is not 'y':
-        user_file = input('Please enter the exact name of your csv file: ')
-        happy = input(f'You chose: {user_file}, is this correct? y or n: ')
-    
-    # instantiate LoadArray class with the user_file selection
-    user = LoadArray(user_file)
-
-    # loop to allow the user to use the methods and functions above
-    while selection is not 'q':
-        menu()
-        selection = input('Please choose an option above: ')
-
-        # user choices and logic
-        if selection == '1':
+    # loop to get the csv file and load it
+    while True:
+        user_csv_file = input('Please enter the exact name of your csv file: ')
+        try:
+            user = LoadArray(user_csv_file)
             user.get_titles()
             user.get_rows()
-        elif selection == '2':
+            break
+        except FileNotFoundError:
+            print('Please enter a valid .csv file.')
+
+    # main loop for user interaction
+    while choice is not 'q':
+        menu()
+        choice = input('Please choose an option above: ')
+
+        if choice == '1':
+            print('Feature will be implemented soon.')
+        elif choice == '2':
             print(f'This csv file has {len(user)} rows.')
             user.read(int(input('How many rows would you like to read? ')))
-        elif selection == '3':
+        elif choice == '3':
             print('Feature will be implemented soon.')
-        elif selection == '4':
+        elif choice == '4':
             print('Feature will be implemented soon.')
-        elif selection == '5':
+        elif choice == '5':
             print('Feature will be implemented soon.')
