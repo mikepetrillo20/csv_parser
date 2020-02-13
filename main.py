@@ -9,8 +9,8 @@ def menu():
     print('5: TODO')
     print('q: Quit')
 
-class ParserUsingArray:
-
+# loads csv file data into two array data structures
+class LoadArray:
     def __init__(self, csv_file):
         self.rows = []
         self.titles = []
@@ -49,8 +49,8 @@ if __name__ == "__main__":
         user_file = input('Please enter the exact name of your csv file: ')
         happy = input(f'You chose: {user_file}, is this correct? y or n: ')
     
-    # instantiating ParserUsingArray class with the user_file selection
-    user = ParserUsingArray(user_file)
+    # instantiate LoadArray class with the user_file selection
+    user = LoadArray(user_file)
 
     # loop to allow the user to use the methods and functions above
     while selection is not 'q':
