@@ -54,7 +54,6 @@ if __name__ == "__main__":
 
     # loop to allow the user to use the methods and functions above
     while selection is not 'q':
-        # print out the feature menu
         menu()
         selection = input('Please choose an option above: ')
 
