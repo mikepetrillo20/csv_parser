@@ -24,17 +24,26 @@ class LoadArray:
         for row in self.rows[:num_rows]:
             print(row)
 
-    def get_rows(self):
+    def set_rows(self):
         with open(self.csv_file, 'r') as csvfile:
             csvreader = csv.reader(csvfile)
             next(csvreader)
             for row in csvreader:
                 self.rows.append(row)
 
-    def get_titles(self):
+    def set_title_bar(self):
         with open(self.csv_file, 'r') as csvfile:
             csvreader = csv.reader(csvfile)
             self.titles = next(csvreader)
+
+    def get_title_bar(self):
+        d = {}
+        for index, title in enumerate(self.titles):
+            d[index] = title
+        return d
+
+    def sort_array(self, column):
+        pass
 
 if __name__ == "__main__":
     choice = ''
@@ -45,8 +54,8 @@ if __name__ == "__main__":
         user_csv_file = input('Please enter the exact name of your csv file: ')
         try:
             user = LoadArray(user_csv_file)
-            user.get_titles()
-            user.get_rows()
+            user.set_title_bar()
+            user.set_rows()
             break
         except FileNotFoundError:
             print('Please enter a valid .csv file.')
