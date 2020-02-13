@@ -9,7 +9,6 @@ def menu():
     print('5: TODO')
     print('q: Quit')
 
-
 class ParserUsingArray:
 
     def __init__(self, csv_file):
@@ -17,43 +16,25 @@ class ParserUsingArray:
         self.titles = []
         self.csv_file = csv_file
 
-    # returns the number of rows (not including first row) in the csv file
     def __len__(self):
         return len(self.rows)
     
-    # prints the title row then each following row according to a user input number
     def read(self, num_rows=10):
         print(self.titles)
         for row in self.rows[:num_rows]:
             print(row)
 
     def get_rows(self):
-        # reading the csv file
         with open(self.csv_file, 'r') as csvfile:
-            # creating the csv reader object
             csvreader = csv.reader(csvfile)
-
-            # skips first row
             next(csvreader)
-
-            # grabbing each data row one by one
             for row in csvreader:
                 self.rows.append(row)
 
     def get_titles(self):
-        # reading the csv file
         with open(self.csv_file, 'r') as csvfile:
-            # creating the csv reader object
             csvreader = csv.reader(csvfile)
-
-            # grabbing the first row and moving pointer to following row
             self.titles = next(csvreader)
-
-# user = ParserUsingArray('small_data.csv')
-# user.get_titles()
-# user.get_rows()
-# print(len(user.rows))
-
 
 if __name__ == "__main__":
     # user choice selection
