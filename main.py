@@ -4,7 +4,6 @@ from operator import itemgetter
 
 
 def menu():
-    print('Please select an option below:')
     print('1: Print')
     print('2: Sort')
     print('3: TODO')
@@ -16,7 +15,7 @@ def menu():
 class Data:
     def __init__(self, csv_file):
         self.rows = []
-        self.titles = []
+        self.columns = []
         self.csv_file = csv_file
 
     def __len__(self):
@@ -24,33 +23,35 @@ class Data:
 
     def read(self):
         # TODO: convert this to a dunder method
-        print(self.titles)
+        print(self.columns)
         for row in self.rows:
             print(row)
+        print()
 
     def build_array(self):
         with open(self.csv_file, 'r') as csvfile:
             csvreader = csv.reader(csvfile)
-            self._title_bar(csvreader)
-            self._rows(csvreader)
+            self._get_columns(csvreader)
+            self._get_rows(csvreader)
 
-    def get_title_bar(self):
-        # TODO: figure out a better way to do this
-        d = {}
-        for index, title in enumerate(self.titles):
-            d[index] = title
-        return d
+    def display_columns(self):
+        for integer, column in enumerate(self.columns):
+            print(f'{integer}: {column}')
+
+    def display_rows(self):
+        # TODO: find a way to display human readable rows
+        pass
 
     def sort_array(self, column):
         self.rows.sort(key=lambda x: x[column])
 
-    def _rows(self, reader):
+    def _get_rows(self, reader):
         for row in reader:
             row = self._convert_potential_number(row)
             self.rows.append(row)
 
-    def _title_bar(self, reader):
-        self.titles = next(reader)
+    def _get_columns(self, reader):
+        self.columns = next(reader)
 
     def _convert_potential_number(self, row):
         new_row = []
@@ -83,17 +84,16 @@ if __name__ == "__main__":
     # main loop for user interaction
     while choice is not 'q':
         menu()
-        choice = input('Please choose an option above: ')
+        choice = input('What would you like to do? ')
+        print()
 
         if choice == '1':
             user.read()
         elif choice == '2':
-            t0 = time.time()
-            # TODO: add a way for user to select what row they want to sort by
-            user.sort_array(0)
-            t1 = time.time()
-            #TODO: find a more accurate time tracker
-            print(f'Finished Sorting in {t1-t0} seconds.')
+            user.display_columns()
+            column_choice = input('Which row to sort by? ')
+            print()
+            user.sort_array(int(column_choice))
         elif choice == '3':
             print('Feature will be implemented soon.')
         elif choice == '4':

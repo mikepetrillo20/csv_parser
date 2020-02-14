@@ -17,16 +17,10 @@ class TestData(unittest.TestCase):
         self.assertEqual(self.test.rows[9][1], 'STUDIO IN THE SKY - A Documentary Feature Film (Canceled)')
     
     def test_set_title_bar(self):
-        self.assertEqual(self.test.titles[0], 'ID')
-        self.assertEqual(self.test.titles[1], 'name')
-        self.assertEqual(self.test.titles[2], 'category')
-        self.assertEqual(self.test.titles[3], 'main_category')
-
-    def test_get_title_bar(self):
-        self.assertEqual(self.test.get_title_bar()[0], 'ID')
-        self.assertEqual(self.test.get_title_bar()[1], 'name')
-        self.assertEqual(self.test.get_title_bar()[2], 'category')
-        self.assertEqual(self.test.get_title_bar()[3], 'main_category')
+        self.assertEqual(self.test.columns[0], 'ID')
+        self.assertEqual(self.test.columns[1], 'name')
+        self.assertEqual(self.test.columns[2], 'category')
+        self.assertEqual(self.test.columns[3], 'main_category')
 
     def test_sort_array(self):
         self.test.sort_array(1)
