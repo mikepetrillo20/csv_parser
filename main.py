@@ -13,7 +13,7 @@ def menu():
     print('q: Quit')
 
 
-class LoadArray:
+class Data:
     def __init__(self, csv_file):
         self.rows = []
         self.titles = []
@@ -35,6 +35,7 @@ class LoadArray:
             self._rows(csvreader)
 
     def get_title_bar(self):
+        # TODO: figure out a better way to do this
         d = {}
         for index, title in enumerate(self.titles):
             d[index] = title
@@ -72,7 +73,7 @@ if __name__ == "__main__":
     while True:
         user_csv_file = input('Please enter the exact name of your csv file: ')
         try:
-            user = LoadArray(user_csv_file)
+            user = Data(user_csv_file)
             user.build_array()
             print(f'This csv file has {len(user)} rows.')
             break
@@ -88,9 +89,10 @@ if __name__ == "__main__":
             user.read()
         elif choice == '2':
             t0 = time.time()
-            # TODO: add a way for user to select what row that want to sort by
+            # TODO: add a way for user to select what row they want to sort by
             user.sort_array(0)
             t1 = time.time()
+            #TODO: find a more accurate time tracker
             print(f'Finished Sorting in {t1-t0} seconds.')
         elif choice == '3':
             print('Feature will be implemented soon.')

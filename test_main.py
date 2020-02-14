@@ -1,10 +1,10 @@
 import unittest
 import main
 
-class TestLoadArray(unittest.TestCase):
+class TestData(unittest.TestCase):
     
     def setUp(self):
-        self.test = main.LoadArray('test_data.csv')
+        self.test = main.Data('test_data.csv')
         self.test.build_array()
 
     def test_len(self):
@@ -38,6 +38,8 @@ class TestLoadArray(unittest.TestCase):
         self.assertEqual(self.test.rows[0][2], 'Documentary')
         self.assertEqual(self.test.rows[4][2], 'Music')
         self.assertEqual(self.test.rows[9][2], 'Restaurants')
+
+        # TODO: add additional tests to test int and double rows
 
     def tearDown(self):
         self.test = None
