@@ -39,7 +39,6 @@ class TestLoadArray(unittest.TestCase):
         self.assertEqual(self.test.rows[0][2], 'Documentary')
         self.assertEqual(self.test.rows[4][2], 'Music')
         self.assertEqual(self.test.rows[9][2], 'Restaurants')
-        
 
     def tearDown(self):
         self.test = None

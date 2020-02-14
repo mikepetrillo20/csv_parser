@@ -22,9 +22,9 @@ class LoadArray:
         return len(self.rows)
     
     def read(self):
-        print(" ".join(self.titles))
+        print(self.titles)
         for row in self.rows:
-            print(" ".join(row))
+            print(row)
 
     def set_rows(self):
         with open(self.csv_file, 'r') as csvfile:
@@ -45,9 +45,12 @@ class LoadArray:
         return d
 
     def sort_array(self, column):
-        # TODO: test other solutions here
         # TODO: every item is a string, wont sort int column yet
         self.rows.sort(key = lambda x: x[column])
+    
+    def _convert_potential_number(self):
+        # TODO: find a way to convert to float and int
+        pass
 
 if __name__ == "__main__":
     user_csv_file = ''
@@ -75,7 +78,7 @@ if __name__ == "__main__":
         elif choice == '2':
             t0 = time.time()
             # TODO: add a way for user to select what row that want to sort by
-            user.sort_array(1)
+            user.sort_array(0)
             t1 = time.time()
             print(f'Finished Sorting in {t1-t0} seconds.')
         elif choice == '3':

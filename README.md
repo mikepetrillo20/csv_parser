@@ -7,8 +7,11 @@ Current work in progress.
 * `small_data.csv` has exactly 10,000 rows of data
 * `test_data.csv` has 10 rows of data for testing purposes only
 
-### Function
-* Test different sort algorithms against a large dataset
+### Current Functionality
+* Grabs csv file
+* Prints csv file
+* Sorts csv file by whatever column user chooses
 
-### Sorting Algorithms Implemented
+### Current Difficulties
+* Trouble converting a str to float on rows that have float values
 
