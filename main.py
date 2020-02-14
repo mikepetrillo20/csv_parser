@@ -1,5 +1,4 @@
 import csv
-import time
 from operator import itemgetter
 
 

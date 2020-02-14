@@ -9,9 +9,8 @@ Current work in progress.
 
 ### Current Functionality
 * Grabs csv file
+* Properly assigns a type to each column for sorting
 * Prints csv file
 * Sorts csv file by whatever column user chooses
 
-### Current Difficulties
-* Trouble converting a str to float on rows that have float values
 
