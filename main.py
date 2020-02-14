@@ -23,6 +23,7 @@ class LoadArray:
         return len(self.rows)
 
     def read(self):
+        # TODO: convert this to a dunder method
         print(self.titles)
         for row in self.rows:
             print(row)
@@ -32,6 +33,7 @@ class LoadArray:
             csvreader = csv.reader(csvfile)
             next(csvreader)
             for row in csvreader:
+                row = self._convert_potential_number(row)
                 self.rows.append(row)
 
     def set_title_bar(self):
@@ -46,12 +48,19 @@ class LoadArray:
         return d
 
     def sort_array(self, column):
-        # TODO: every item is a string, wont sort int column yet
         self.rows.sort(key=lambda x: x[column])
 
-    def _convert_potential_number(self):
-        # TODO: find a way to convert to float and int
-        pass
+    def _convert_potential_number(self, row):
+        new_row = []
+        for item in row:
+            try:
+                new_row.append(int(item))
+            except ValueError:
+                try:
+                    new_row.append(float(item))
+                except ValueError:
+                    new_row.append(item)
+        return new_row
 
 
 if __name__ == "__main__":
