@@ -1,4 +1,5 @@
 import csv
+import time
 from operator import itemgetter
 
 def menu():
@@ -44,8 +45,8 @@ class LoadArray:
         return d
 
     def sort_array(self, column):
-        # test other solutions here
-        # every item is a string, wont sort int column yet
+        # TODO: test other solutions here
+        # TODO: every item is a string, wont sort int column yet
         self.rows.sort(key = lambda x: x[column])
 
 if __name__ == "__main__":
@@ -72,8 +73,11 @@ if __name__ == "__main__":
         if choice == '1':
             user.read()
         elif choice == '2':
+            t0 = time.time()
+            # TODO: add a way for user to select what row that want to sort by
             user.sort_array(1)
-            print('Finished Sorting')
+            t1 = time.time()
+            print(f'Finished Sorting in {t1-t0} seconds.')
         elif choice == '3':
             print('Feature will be implemented soon.')
         elif choice == '4':
