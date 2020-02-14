@@ -1,9 +1,10 @@
 import csv
+from operator import itemgetter
 
 def menu():
     print('Please select an option below:')
-    print('1: TODO')
-    print('2: Print')
+    print('1: Print')
+    print('2: Sort')
     print('3: TODO')
     print('4: TODO')
     print('5: TODO')
@@ -43,12 +44,13 @@ class LoadArray:
         return d
 
     def sort_array(self, column):
-        pass
+        # test other solutions here
+        self.rows.sort(key = lambda x: x[column])
 
 if __name__ == "__main__":
-    choice = ''
     user_csv_file = ''
-
+    choice = ''
+    
     # loop to get the csv file and load it
     while True:
         user_csv_file = input('Please enter the exact name of your csv file: ')
@@ -66,10 +68,10 @@ if __name__ == "__main__":
         choice = input('Please choose an option above: ')
 
         if choice == '1':
-            print('Feature will be implemented soon.')
-        elif choice == '2':
             print(f'This csv file has {len(user)} rows.')
             user.read(int(input('How many rows would you like to read? ')))
+        elif choice == '2':
+            print('Feature will be implemented soon.')
         elif choice == '3':
             print('Feature will be implemented soon.')
         elif choice == '4':
