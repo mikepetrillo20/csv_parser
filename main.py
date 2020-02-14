@@ -20,10 +20,10 @@ class LoadArray:
     def __len__(self):
         return len(self.rows)
     
-    def read(self, num_rows=10):
-        print(self.titles)
-        for row in self.rows[:num_rows]:
-            print(row)
+    def read(self):
+        print(" ".join(self.titles))
+        for row in self.rows:
+            print(" ".join(row))
 
     def set_rows(self):
         with open(self.csv_file, 'r') as csvfile:
@@ -45,6 +45,7 @@ class LoadArray:
 
     def sort_array(self, column):
         # test other solutions here
+        # every item is a string, wont sort int column yet
         self.rows.sort(key = lambda x: x[column])
 
 if __name__ == "__main__":
@@ -58,6 +59,7 @@ if __name__ == "__main__":
             user = LoadArray(user_csv_file)
             user.set_title_bar()
             user.set_rows()
+            print(f'This csv file has {len(user)} rows.')
             break
         except FileNotFoundError:
             print('Please enter a valid .csv file.')
@@ -68,10 +70,10 @@ if __name__ == "__main__":
         choice = input('Please choose an option above: ')
 
         if choice == '1':
-            print(f'This csv file has {len(user)} rows.')
-            user.read(int(input('How many rows would you like to read? ')))
+            user.read()
         elif choice == '2':
-            print('Feature will be implemented soon.')
+            user.sort_array(1)
+            print('Finished Sorting')
         elif choice == '3':
             print('Feature will be implemented soon.')
         elif choice == '4':

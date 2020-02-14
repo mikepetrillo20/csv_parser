@@ -30,8 +30,16 @@ class TestLoadArray(unittest.TestCase):
         self.assertEqual(self.test.get_title_bar()[3], 'main_category')
 
     def test_sort_array(self):
+        self.test.sort_array(1)
+        self.assertEqual(self.test.rows[0][1], 'Chaser Strips. Our Strips make Shots their B*tch!')
+        self.assertEqual(self.test.rows[4][1], 'SPIN - Premium Retractable In-Ear Headphones with Mic')
+        self.assertEqual(self.test.rows[9][1], 'Where is Hank?')
+
         self.test.sort_array(2)
-        self.test.read()
+        self.assertEqual(self.test.rows[0][2], 'Documentary')
+        self.assertEqual(self.test.rows[4][2], 'Music')
+        self.assertEqual(self.test.rows[9][2], 'Restaurants')
+        
 
     def tearDown(self):
         self.test = None

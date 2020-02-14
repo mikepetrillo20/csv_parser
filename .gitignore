@@ -3,3 +3,4 @@ venv
 .vscode
 __pycache__
 __pycache__/csv_parser.cpython-37.pyc
+practice.csv
