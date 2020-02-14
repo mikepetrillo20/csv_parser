@@ -28,18 +28,11 @@ class LoadArray:
         for row in self.rows:
             print(row)
 
-    def set_rows(self):
+    def build_array(self):
         with open(self.csv_file, 'r') as csvfile:
             csvreader = csv.reader(csvfile)
-            next(csvreader)
-            for row in csvreader:
-                row = self._convert_potential_number(row)
-                self.rows.append(row)
-
-    def set_title_bar(self):
-        with open(self.csv_file, 'r') as csvfile:
-            csvreader = csv.reader(csvfile)
-            self.titles = next(csvreader)
+            self._title_bar(csvreader)
+            self._rows(csvreader)
 
     def get_title_bar(self):
         d = {}
@@ -49,6 +42,14 @@ class LoadArray:
 
     def sort_array(self, column):
         self.rows.sort(key=lambda x: x[column])
+
+    def _rows(self, reader):
+        for row in reader:
+            row = self._convert_potential_number(row)
+            self.rows.append(row)
+
+    def _title_bar(self, reader):
+        self.titles = next(reader)
 
     def _convert_potential_number(self, row):
         new_row = []
@@ -72,8 +73,7 @@ if __name__ == "__main__":
         user_csv_file = input('Please enter the exact name of your csv file: ')
         try:
             user = LoadArray(user_csv_file)
-            user.set_title_bar()
-            user.set_rows()
+            user.build_array()
             print(f'This csv file has {len(user)} rows.')
             break
         except FileNotFoundError:

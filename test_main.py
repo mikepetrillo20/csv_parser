@@ -5,8 +5,7 @@ class TestLoadArray(unittest.TestCase):
     
     def setUp(self):
         self.test = main.LoadArray('test_data.csv')
-        self.test.set_rows()
-        self.test.set_title_bar()
+        self.test.build_array()
 
     def test_len(self):
         self.assertEqual(len(self.test), 10)
