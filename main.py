@@ -2,6 +2,7 @@ import csv
 import time
 from operator import itemgetter
 
+
 def menu():
     print('Please select an option below:')
     print('1: Print')
@@ -11,7 +12,7 @@ def menu():
     print('5: TODO')
     print('q: Quit')
 
-# loads csv file data into two array data structures
+
 class LoadArray:
     def __init__(self, csv_file):
         self.rows = []
@@ -20,7 +21,7 @@ class LoadArray:
 
     def __len__(self):
         return len(self.rows)
-    
+
     def read(self):
         print(self.titles)
         for row in self.rows:
@@ -46,16 +47,17 @@ class LoadArray:
 
     def sort_array(self, column):
         # TODO: every item is a string, wont sort int column yet
-        self.rows.sort(key = lambda x: x[column])
-    
+        self.rows.sort(key=lambda x: x[column])
+
     def _convert_potential_number(self):
         # TODO: find a way to convert to float and int
         pass
 
+
 if __name__ == "__main__":
     user_csv_file = ''
     choice = ''
-    
+
     # loop to get the csv file and load it
     while True:
         user_csv_file = input('Please enter the exact name of your csv file: ')
