@@ -11,6 +11,7 @@ Current work in progress.
 * Grabs csv file
 * Properly assigns a type to each column for sorting
 * Prints csv file
-* Sorts csv file by whatever column user chooses
+* Option to sort csv file by any column the user chooses
+* Option to overwrite original csv file once sorted
 
 

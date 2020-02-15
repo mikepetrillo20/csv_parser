@@ -1,3 +1,9 @@
+'''
+TODO: build out functionality to choose delimiter
+TODO: build out create_new_file method
+TODO: figure out how to convert dates and sort them properly
+'''
+
 import csv
 from operator import itemgetter
 
@@ -46,7 +52,7 @@ class Data:
             # loops through rows and overwrites them
             for row in self.rows:
                 csvwriter.writerow(row)
-                
+
     def create_new_file(self, new_file_name):
         pass
 
@@ -115,4 +121,4 @@ if __name__ == "__main__":
             user.overwrite_file()
             print('File overwritten.')
         elif choice == '4':  # Create New File
-            pass # TODO: add functionality
+            pass  # TODO: add functionality
