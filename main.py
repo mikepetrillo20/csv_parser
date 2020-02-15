@@ -37,20 +37,24 @@ class Data:
         self.rows.sort(key=lambda x: x[column])
 
     def _get_rows(self, reader):
+        # creates a list of rows, each row is a list
         for row in reader:
             row = self._convert_potential_number(row)
             self.rows.append(row)
 
     def _get_columns(self, reader):
+        # grabs the first row in a .csv (usually title row)
         self.columns = next(reader)
 
     def _convert_potential_number(self, row):
         new_row = []
         for item in row:
             try:
+                # try to convert str to int first
                 new_row.append(int(item))
             except ValueError:
                 try:
+                    # try to convert str to float second
                     new_row.append(float(item))
                 except ValueError:
                     new_row.append(item)
@@ -59,9 +63,9 @@ class Data:
 
 if __name__ == "__main__":
     user_csv_file = ''
-    choice = ''
+    choice = ''  # user menu() choice
 
-    # loop to get the csv file and load it
+    # loop to assign the csv file, check validity, and load it
     while True:
         user_csv_file = input('Please enter the exact name of your csv file: ')
         try:
@@ -72,16 +76,24 @@ if __name__ == "__main__":
         except FileNotFoundError:
             print('Please enter a valid .csv file.')
 
-    # main loop for user interaction
+    # main loop for menu() interaction
     while choice is not 'q':
         menu()
         choice = input('What would you like to do? ')
         print()
 
-        if choice == '1':
+        if choice == '1':  # print
             user.read()
-        elif choice == '2':
+        elif choice == '2':  # sort
             user.display_columns()
             column_choice = input('Which row to sort by? ')
             print()
-            user.sort_array(int(column_choice))
+
+            # loop to assign and check valid column choice
+            while True:
+                try:
+                    user.sort_array(int(column_choice))
+                    break
+                except IndexError:
+                    column_choice = input('Please choose a valid option. ')
+                    print()
