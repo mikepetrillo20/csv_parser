@@ -1,5 +1,4 @@
 '''
-TODO: build out functionality to choose delimiter
 TODO: figure out how to convert dates and sort them properly
 '''
 
@@ -30,17 +29,18 @@ class CSVParser:
             print(row)
         print()
 
-    def build_array(self):
+    def build_array(self, delimiter):
         with open(self.csv_file, 'r') as csvfile:
-            csvreader = csv.reader(csvfile)
-            self._get_columns(csvreader)
-            self._get_rows(csvreader)
+            csvreader = csv.reader(csvfile, delimiter=delimiter)
+            self._get_columns(reader=csvreader)
+            self._get_rows(reader=csvreader)
 
     def display_columns(self):
         for integer, column in enumerate(self.columns):
             print(f'{integer}: {column}')
 
     def sort_array(self, column):
+        # sorts a list of lists based on a given index (column)
         self.rows.sort(key=lambda x: x[column])
 
     def overwrite_or_create_file(self, file_name):
@@ -79,14 +79,17 @@ class CSVParser:
 
 if __name__ == "__main__":
     user_csv_file = ''
+    file_delimiter = ''
     choice = ''  # user menu() choice
 
-    # loop to assign the csv file, check validity, and load it
+    # loop to assign the csv file, check validity, pick delimiter and load it
     while True:
-        user_csv_file = input('Please enter the exact name of your csv file: ')
+        user_csv_file = input('Name of your csv file: ')
+        file_delimiter = input('Delimiter: ')
+
         try:
-            user = CSVParser(user_csv_file)
-            user.build_array()
+            user = CSVParser(csv_file=user_csv_file)
+            user.build_array(delimiter=file_delimiter)
             print(f'This csv file has {len(user)} rows.')
             break
         except FileNotFoundError:
@@ -100,6 +103,7 @@ if __name__ == "__main__":
 
         if choice == '1':  # print
             user.read()
+
         elif choice == '2':  # sort
             user.display_columns()
             column_choice = input('Which row to sort by? ')
@@ -108,18 +112,21 @@ if __name__ == "__main__":
             # loop to assign and check valid column choice
             while True:
                 try:
-                    user.sort_array(int(column_choice))
+                    user.sort_array(column=int(column_choice))
                     break
                 except IndexError:
                     column_choice = input('Please choose a valid option. ')
                     print()
+
         elif choice == '3':  # Overwrite File
-            user.overwrite_or_create_file(user.csv_file)
+            user.overwrite_or_create_file(file_name=user.csv_file)
             print('File overwritten.\n')
+
         elif choice == '4':  # Create New File
             new_file_name = input('New file name (example.csv): ')
+
             # loop to check for valid file name
             while new_file_name[-4:] != '.csv':
                 new_file_name = input('Please end your file name with .csv: ')
-            user.overwrite_or_create_file(new_file_name)
+            user.overwrite_or_create_file(file_name=new_file_name)
             print(f'\nCreated a new file named {new_file_name}.\n')

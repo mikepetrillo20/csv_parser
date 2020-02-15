@@ -5,7 +5,7 @@ class TestData(unittest.TestCase):
     
     def setUp(self):
         self.test = main.CSVParser('test_data.csv')
-        self.test.build_array()
+        self.test.build_array(delimiter=',')
 
     def test_len(self):
         self.assertEqual(len(self.test), 10)

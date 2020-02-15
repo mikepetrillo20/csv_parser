@@ -8,9 +8,10 @@ Current work in progress.
 * `test_data.csv` has 10 rows of data for testing purposes only
 
 ### Current Functionality
-* Grabs csv file
-* Properly assigns a type to each column for sorting
-* Prints csv file
+* Grabs csv file data
+* Assign a type to each column (int, str, float)
+* Prints csv file to console
+* Ability to choose the files delimiter
 * Option to sort csv file by any column the user chooses
 * Option to overwrite original csv file once sorted
 * Option to create new csv file and leave original untouched
