@@ -1,6 +1,5 @@
 '''
 TODO: build out functionality to choose delimiter
-TODO: build out create_new_file method
 TODO: figure out how to convert dates and sort them properly
 '''
 
@@ -44,17 +43,14 @@ class Data:
     def sort_array(self, column):
         self.rows.sort(key=lambda x: x[column])
 
-    def overwrite_file(self):
-        with open(self.csv_file, 'w') as csvfile:
+    def overwrite_or_create_file(self, file_name):
+        with open(file_name, 'w') as csvfile:
             csvwriter = csv.writer(csvfile)
-            # overwrites the column row first
+            # writes the column row first
             csvwriter.writerow(self.columns)
-            # loops through rows and overwrites them
+            # loops through rows
             for row in self.rows:
                 csvwriter.writerow(row)
-
-    def create_new_file(self, new_file_name):
-        pass
 
     def _get_rows(self, reader):
         # creates a list of rows, each row is a list
@@ -118,7 +114,12 @@ if __name__ == "__main__":
                     column_choice = input('Please choose a valid option. ')
                     print()
         elif choice == '3':  # Overwrite File
-            user.overwrite_file()
-            print('File overwritten.')
+            user.overwrite_or_create_file(user.csv_file)
+            print('File overwritten.\n')
         elif choice == '4':  # Create New File
-            pass  # TODO: add functionality
+            new_file_name = input('New file name (example.csv): ')
+            # loop to check for valid file name
+            while new_file_name[-4:] != '.csv':
+                new_file_name = input('Please end your file name with .csv: ')
+            user.overwrite_or_create_file(new_file_name)
+            print(f'\nCreated a new file named {new_file_name}.\n')

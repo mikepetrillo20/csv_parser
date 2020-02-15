@@ -13,5 +13,6 @@ Current work in progress.
 * Prints csv file
 * Option to sort csv file by any column the user chooses
 * Option to overwrite original csv file once sorted
+* Option to create new csv file and leave original untouched
 
 
