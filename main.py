@@ -38,6 +38,18 @@ class Data:
     def sort_array(self, column):
         self.rows.sort(key=lambda x: x[column])
 
+    def overwrite_file(self):
+        with open(self.csv_file, 'w') as csvfile:
+            csvwriter = csv.writer(csvfile)
+            # overwrites the column row first
+            csvwriter.writerow(self.columns)
+            # loops through rows and overwrites them
+            for row in self.rows:
+                csvwriter.writerow(row)
+                
+    def create_new_file(self, new_file_name):
+        pass
+
     def _get_rows(self, reader):
         # creates a list of rows, each row is a list
         for row in reader:
@@ -100,6 +112,7 @@ if __name__ == "__main__":
                     column_choice = input('Please choose a valid option. ')
                     print()
         elif choice == '3':  # Overwrite File
-            pass # TODO: add functionality
+            user.overwrite_file()
+            print('File overwritten.')
         elif choice == '4':  # Create New File
             pass # TODO: add functionality
