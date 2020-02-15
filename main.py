@@ -5,6 +5,8 @@ from operator import itemgetter
 def menu():
     print('1: Print')
     print('2: Sort')
+    print('3: Overwrite File')
+    print('4: Create New File')
     print('q: Quit')
 
 
@@ -97,3 +99,7 @@ if __name__ == "__main__":
                 except IndexError:
                     column_choice = input('Please choose a valid option. ')
                     print()
+        elif choice == '3':  # Overwrite File
+            pass # TODO: add functionality
+        elif choice == '4':  # Create New File
+            pass # TODO: add functionality
