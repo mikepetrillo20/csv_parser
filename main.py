@@ -15,7 +15,7 @@ def menu():
     print('q: Quit')
 
 
-class Data:
+class CSVParser:
     def __init__(self, csv_file):
         self.rows = []
         self.columns = []
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     while True:
         user_csv_file = input('Please enter the exact name of your csv file: ')
         try:
-            user = Data(user_csv_file)
+            user = CSVParser(user_csv_file)
             user.build_array()
             print(f'This csv file has {len(user)} rows.')
             break

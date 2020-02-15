@@ -4,7 +4,7 @@ import main
 class TestData(unittest.TestCase):
     
     def setUp(self):
-        self.test = main.Data('test_data.csv')
+        self.test = main.CSVParser('test_data.csv')
         self.test.build_array()
 
     def test_len(self):
