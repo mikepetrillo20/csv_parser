@@ -1,17 +1,5 @@
-'''
-TODO: figure out how to convert dates and sort them properly
-'''
-
 import csv
 from operator import itemgetter
-
-
-def menu():
-    print('1: Print')
-    print('2: Sort')
-    print('3: Overwrite File')
-    print('4: Create New File')
-    print('q: Quit')
 
 
 class CSVParser:
@@ -75,6 +63,14 @@ class CSVParser:
                 except ValueError:
                     new_row.append(item)
         return new_row
+
+
+def menu():
+    print('1: Print')
+    print('2: Sort')
+    print('3: Overwrite File')
+    print('4: Create New File')
+    print('q: Quit')
 
 
 if __name__ == "__main__":

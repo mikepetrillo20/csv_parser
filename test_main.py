@@ -35,6 +35,12 @@ class TestData(unittest.TestCase):
         self.assertEqual(self.test.rows[4][1], 'SPIN - Premium Retractable In-Ear Headphones with Mic')
         self.assertEqual(self.test.rows[9][1], 'Where is Hank?')
 
+        # sort by date
+        self.test.sort_array(5)
+        self.assertEqual(self.test.rows[0][5], '2012-04-16')
+        self.assertEqual(self.test.rows[4][5], '2014-12-21')
+        self.assertEqual(self.test.rows[9][5], '2017-11-01')
+
         # sort by float
         self.test.sort_array(6)
         self.assertEqual(self.test.rows[0][6], 1000.0)
